@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
-    "angular": "1.4.7",
+    "angular": "1.7.9",
     "angular-sanitize": "^1.4.7",
     "css-loader": "^3.4.2",
     "etiennes-ods-widgets": "^0.0.3",
