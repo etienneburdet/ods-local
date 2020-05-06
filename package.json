@@ -1,12 +1,11 @@
 {
-  "name": "ods-minimal-boilerplate",
+  "name": "create-ods-project",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "license": "MIT",
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server",
-    "start": "http-server dist",
     "watch": "webpack --watch"
   },
   "dependencies": {
