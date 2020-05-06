@@ -5,66 +5,10 @@
   <title>ODS Widgets Minimal Boilerplate</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- These are  the required CSS files if you use ODS widgets -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://opendatasoft.github.io/ods-widgets/dist/ods-widgets.css">
 </head>
 
 <body>
-  <div class="container-fluid" ng-app="ods-widgets">
-    <ods-dataset-context context="velo, coupures" velo-domain="data.opendatasoft.com" coupures-domain="data.opendatasoft.com" velo-dataset="amenagements-velo-en-ile-de-france@datailedefrance"
-      coupures-dataset="coupures-urbaines-dile-de-france0@datailedefrance">
-      <div class="ods-map-wrapper" id="idf">
-        <ods-map class="ods-map" location="10,48.831,2.349" scroll-wheel-zoom="false" display-control="0">
-          <ods-map-layer context="velo" color="#128317"></ods-map-layer>
-        </ods-map>
-      </div>
-      <div class="ods-map-wrapper" id="coupures">
-        <ods-map class="ods-map" location="10,48.831,2.349" scroll-wheel-zoom="false" display-control="0">
-          <ods-map-layer context="coupures" color="#ba681c"></ods-map-layer>
-        </ods-map>
-      </div>
-      <div class="ods-map-wrapper" id="fluvial">
-        <ods-map class="ods-map" location="12,48.831,2.349" scroll-wheel-zoom="false" display-control="0">
-          <ods-map-layer context="velo" color="#128317"></ods-map-layer>
-          <ods-map-layer context="coupures" color="#ba681c"></ods-map-layer>
-        </ods-map>
-      </div>
-      <div class="ods-map-wrapper" id="feroviaire">
-        <ods-map class="ods-map" location="15,48.936,2.440" scroll-wheel-zoom="false" display-control="0">
-          <ods-map-layer context="velo" color="#128317"></ods-map-layer>
-          <ods-map-layer context="coupures" color="#ba681c"></ods-map-layer>
-        </ods-map>
-      </div>
-    </ods-dataset-context>
-    <div id="story">
-      <!-- The ".step" is used as a selector for the scroller.
-      Whenever it enters/leaves the screen the onStepEnter/onStepExit callback is fired
-      data-feature will tell wich element to apply/remove the ".acitve" class on.-->
-      <div class="step" data-feature="idf" data-enter="addActiveClass" data-exit="removeActiveClass">
-        <!-- The .step div takes the full screen, inside it you want to place your text etc. which is typically not fullscreen -->
-        <div class="story-block lefty">
-          <p>This is a map</p>
-        </div>
-      </div>
-      <div class="step" data-feature="coupures" data-enter="addActiveClass" data-exit="removeActiveClass">
-        <div class="story-block centered">
-          <p>This is another map</p>
-        </div>
-      </div>
-      <div class="step" data-feature="fluvial" data-enter="addActiveClass" data-exit="removeActiveClass">
-        <div class="story-block righty">
-          <p>And yet another</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- These are  the required js library if you use ODS widgets. Carefully test if you are using a framework, since they rely on AngularJS and jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-sanitize.min.js"></script>
-  <script type="text/javascript" src="https://opendatasoft.github.io/ods-widgets/dist/ods-widgets.js"></script>
 </body>
 
 </html>

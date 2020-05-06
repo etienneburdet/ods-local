@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { InjectManifest } = require('workbox-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -12,6 +13,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'ODS Minimal template',
       template: 'public/index.html'
+    }),
+    new InjectManifest({
+      swSrc: './src/sw.js',
+      swDest: './dist/sw.js'
     })
   ],
   devtool: 'inline-source-map',
