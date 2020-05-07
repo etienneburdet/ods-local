@@ -26,7 +26,6 @@ const createIndexedDB = async () => {
         keyPath: 'id',
         autoIncrement: true
       })
-      store.createIndex('date', 'date')
     }
   })
   return db
@@ -41,11 +40,11 @@ export default async (updateUiFn) => {
     const tx = db.transaction('hosp', 'readwrite')
     networkData.aggregations.forEach(record => tx.store.add(record))
     await tx.done
-    return networkData
+    return networkData.aggregations
   } catch (err) {
     console.log('Network request failed. Offline mode !')
     console.error(err)
     const offlineData = await getLocalData(db)
-    offlineData || noDataMsg()
+    return offlineData
   }
 }
