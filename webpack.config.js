@@ -16,7 +16,7 @@ module.exports = {
     }),
     new InjectManifest({
       swSrc: './src/sw.js',
-      swDest: './dist/sw.js'
+      swDest: './sw.js'
     })
   ],
   devtool: 'inline-source-map',
