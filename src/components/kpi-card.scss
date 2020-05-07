@@ -1,0 +1,34 @@
+$danger: rgb(183,62,79);
+$primary: rgb(40,59,141);
+$info: rgb(45,114,178);
+$light: rgb(192,204,211);
+$secondary: rgb(112,112,112);
+$success: rgb(88,194,176);
+$warning: rgb(283,184,65);
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 23%;
+  margin: 0;
+}
+.card-success {
+  background: $success;
+}
+
+.card-primary {
+  color: white;
+  background: $primary;
+}
+
+.card-warning {
+  background: $warning;
+}
+
+.card-danger {
+  color: white;
+  background: $danger;
+}

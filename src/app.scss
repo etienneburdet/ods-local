@@ -1,0 +1,29 @@
+// rgb(183,62,79) danger
+// rgb(202,117,131)
+// rgb(40,59,141) Primary
+// rgb(16,49,120) Title
+// rgb(96,155,201)
+// rgb(45,114,178) Info
+// rgb(105,117,174)
+// rgb(147,156,197)
+// rgb(192,204,211) Light
+// rgb(112,112,112) Secondary
+// rgb(88,194,176) Success
+// rgb(48,114,124)
+// rgb(283,184,65) Warning
+// rgb(242,201,133)
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  margin: 0;
+}
+
+.page {
+  vertical-align: top;
+  margin: 0;
+  height: calc(var(--vh, 1vh) * 100);
+}
