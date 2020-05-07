@@ -1,6 +1,7 @@
 import './app.scss'
 import loadDataNetworkFirst from './plugins/ods-context.js'
 import generateCards from './components/kpi-card.js'
+import generateToast from './components/toasts.js'
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
@@ -14,8 +15,9 @@ if ('serviceWorker' in navigator) {
 }
 
 const getDataAndRenderUi = async () => {
-  const data = await loadDataNetworkFirst()
-  generateCards(data[0])
+  const res = await loadDataNetworkFirst()
+  generateCards(res.data[0])
+  generateToast(res.status)
 }
 
 getDataAndRenderUi()

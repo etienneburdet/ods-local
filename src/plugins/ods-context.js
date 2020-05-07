@@ -1,4 +1,4 @@
-/* global fetch */
+/* global fetch, localStorage */
 import { openDB } from 'idb'
 
 const baseUrl = 'https://public.opendatasoft.com/api/v2/catalog/datasets/donnees-hospitalieres-covid-19-dep-france/'
@@ -15,14 +15,12 @@ const getLocalData = async (db) => {
   return db.getAll('hosp')
 }
 
-const noDataMsg = async () => {
-  console.log('No local data saved')
-}
+const setLastUpdated = (date) => localStorage.setItem('lastUpdated', date)
 
 const createIndexedDB = async () => {
   const db = await openDB('Contexts', 1, {
     upgrade (db) {
-      const store = db.createObjectStore('hosp', {
+      db.createObjectStore('hosp', {
         keyPath: 'id',
         autoIncrement: true
       })
@@ -31,7 +29,7 @@ const createIndexedDB = async () => {
   return db
 }
 
-export default async (updateUiFn) => {
+export default async () => {
   if (!('indexedDB' in window)) { return null }
   const db = await createIndexedDB()
   try {
@@ -40,11 +38,12 @@ export default async (updateUiFn) => {
     const tx = db.transaction('hosp', 'readwrite')
     networkData.aggregations.forEach(record => tx.store.add(record))
     await tx.done
-    return networkData.aggregations
+    setLastUpdated(new Date())
+    return { data: networkData.aggregations, status: 'online' }
   } catch (err) {
     console.log('Network request failed. Offline mode !')
     console.error(err)
     const offlineData = await getLocalData(db)
-    return offlineData
+    return { data: offlineData, status: 'offline' }
   }
 }

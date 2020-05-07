@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { InjectManifest } = require('workbox-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -17,7 +18,12 @@ module.exports = {
     new InjectManifest({
       swSrc: './src/sw.js',
       swDest: './sw.js'
-    })
+    }),
+    new CopyWebpackPlugin(
+      [{ from: 'src/img', to: 'img/' },
+        'src/manifest.webmanifest'],
+      { ignore: ['.DS_Store'] }
+    )
   ],
   devtool: 'inline-source-map',
   output: {
