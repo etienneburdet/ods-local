@@ -9,19 +9,26 @@ const getServerData = async () => {
   return networkData
 }
 
-export default async() => {
-  if (!('indexedDB' in window)) { return null }
-
+const createIndexedDB = async () => {
   const db = await openDB('Contexts', 1, {
     upgrade (db) {
       const store = db.createObjectStore('hosp', {
-        keyPath: 'id',
-        autoIncrement: true
+        keyPath: 'id'
       })
       store.createIndex('date', 'date')
     }
   })
+  return db
+}
 
-  const networkData = await getServerData(baseUrl,'')
-  await db.add('hosp', networkData)
+export default async () => {
+  if (!('indexedDB' in window)) { return null }
+
+  const db = await createIndexedDB()
+
+  const networkData = await getServerData()
+  await db.clear('hosp')
+  const tx = db.transaction('hosp', 'readwrite')
+  networkData.records.forEach( record => tx.store.add(record))
+  await tx.done
 }
