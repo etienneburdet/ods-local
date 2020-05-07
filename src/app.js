@@ -1,4 +1,5 @@
 import './app.scss'
+import fetchData from './plugins/ods-context.js'
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -11,3 +12,5 @@ if ('serviceWorker' in navigator) {
       })
   })
 }
+
+fetchData()
