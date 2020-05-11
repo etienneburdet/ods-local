@@ -19,6 +19,7 @@ module.exports = {
     new InjectManifest({
       swSrc: './src/sw.js',
       swDest: './sw.js',
+      include: ['./src/img/', './src/manifest.webmanifest'],
       maximumFileSizeToCacheInBytes: 5000000
     }),
     new CopyPlugin(
@@ -26,7 +27,6 @@ module.exports = {
         { from: 'src/img', to: 'img/' },
         'src/manifest.webmanifest'
       ],
-      { ignore: ['.DS_Store'] })
   ],
   devtool: 'inline-source-map',
   output: {
@@ -50,6 +50,10 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
       }
     ]
   },
