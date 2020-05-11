@@ -1,7 +1,7 @@
 import './app.scss'
 import loadDataNetworkFirst from './plugins/ods-context.js'
 import generateCards from './components/kpi-card.js'
-import generateToast from './components/toasts.js'
+import generateToast from './components/status-bar.js'
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {

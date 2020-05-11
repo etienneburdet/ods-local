@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'development',
@@ -17,16 +18,19 @@ module.exports = {
     }),
     new InjectManifest({
       swSrc: './src/sw.js',
-      swDest: './sw.js'
+      swDest: './sw.js',
+      maximumFileSizeToCacheInBytes: 5000000
     }),
     new CopyPlugin(
-      [{ from: 'src/img', to: 'img/' },
-        'src/manifest.webmanifest'],
+      [
+        { from: 'src/img', to: 'img/' },
+        'src/manifest.webmanifest'
+      ],
       { ignore: ['.DS_Store'] })
   ],
   devtool: 'inline-source-map',
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -35,6 +39,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader'
         ]
       },
@@ -47,6 +52,18 @@ module.exports = {
         ]
       }
     ]
+  },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        }
+      }
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
