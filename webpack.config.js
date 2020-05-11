@@ -19,14 +19,14 @@ module.exports = {
     new InjectManifest({
       swSrc: './src/sw.js',
       swDest: './sw.js',
-      include: ['./src/img/', './src/manifest.webmanifest'],
       maximumFileSizeToCacheInBytes: 5000000
     }),
     new CopyPlugin(
       [
         { from: 'src/img', to: 'img/' },
         'src/manifest.webmanifest'
-      ],
+      ]
+    )
   ],
   devtool: 'inline-source-map',
   output: {
@@ -64,7 +64,7 @@ module.exports = {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all',
+          chunks: 'all'
         }
       }
     }
