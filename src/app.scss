@@ -8,10 +8,11 @@ html, body {
 body {
   position: relative;
   margin: 0;
+  vertical-align: top;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
-.page {
-  vertical-align: top;
-  margin: 0;
-  height: calc(var(--vh, 1vh) * 100);
+.hidden {
+  visibility: hidden;
+  display: none;
 }
