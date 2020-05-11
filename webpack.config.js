@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { InjectManifest } = require('workbox-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -19,22 +19,15 @@ module.exports = {
       swSrc: './src/sw.js',
       swDest: './sw.js'
     }),
-    new CopyWebpackPlugin(
+    new CopyPlugin(
       [{ from: 'src/img', to: 'img/' },
         'src/manifest.webmanifest'],
-      { ignore: ['.DS_Store'] }
-    )
+      { ignore: ['.DS_Store'] })
   ],
   devtool: 'inline-source-map',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
-  },
-  externals: {
-    jQuery: 'jquery',
-    angular: 'angular',
-    ngSanitize: 'angular-sanitize',
-    'ods-widgets': 'ods-widgets'
   },
   module: {
     rules: [
