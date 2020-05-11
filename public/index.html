@@ -13,18 +13,18 @@
     <div id="pill" class="pill"></div>
   </div>
   </div>
-  <div id="kpi"></div>
-  <div id="map" class="hidden">
-    <iframe src="https://data.opendatasoft.com/explore/embed/dataset/donnees-dactivite-epidemique-covid-19-par-departement-france@seineouest/custom/?sort=extract_date&static=false&datasetcard=false" width="400" height="300" frameborder="0"></iframe>
+  <div id="kpi" class="page"></div>
+  <div id="map" class="page hidden">
+    <iframe src="https://data.opendatasoft.com/explore/embed/dataset/donnees-dactivite-epidemique-covid-19-par-departement-france@seineouest/custom/?sort=extract_date&static=false&datasetcard=false" frameborder="0"></iframe>
   </div>
-  <div id="question" class="hidden">
+  <div id="question" class="page hidden">
     <h3>Quand est-ce que Jean-Paul Rouvre ?</h3>
     <img src="/img/jp.jpg" alt="Jean-Paul Rouve">
   </div>
   <div id="menu">
-    <button class="button-active"><img src="img/activity.svg" alt="latest figures"></button>
-    <button><img src="img/globe.svg" alt="map"></button>
-    <button><img src="img/help-circle.svg" alt="what?"></button>
+    <button class="button-active" data-tab="kpi"><img src="img/activity.svg" alt="latest figures"></button>
+    <button data-tab="map"><img src="img/globe.svg" alt="map"></button>
+    <button data-tab="question"><img src="img/help-circle.svg" alt="what?"></button>
   </div>
 </body>
 
