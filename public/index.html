@@ -5,27 +5,18 @@
   <title>ODS Widgets Minimal Boilerplate</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=1.0, minimum-scale=0.86">
-  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://opendatasoft.github.io/ods-widgets/dist/ods-widgets.css">
 </head>
 <body>
-  <div id="status">
-    <p id="last-updated"></p>
-    <div id="pill" class="pill"></div>
-  </div>
-  </div>
-  <div id="kpi" class="page"></div>
-  <div id="map" class="page hidden">
-    <iframe src="https://data.opendatasoft.com/explore/embed/dataset/donnees-dactivite-epidemique-covid-19-par-departement-france@seineouest/custom/?sort=extract_date&static=false&datasetcard=false" frameborder="0"></iframe>
-  </div>
-  <div id="question" class="page hidden">
-    <h3>Quand est-ce que Jean-Paul Rouvre ?</h3>
-    <img src="/img/jp.jpg" alt="Jean-Paul Rouve">
-  </div>
-  <div id="menu">
-    <button class="button-active" data-tab="kpi"><img src="img/activity.svg" alt="latest figures"></button>
-    <button data-tab="map"><img src="img/globe.svg" alt="map"></button>
-    <button data-tab="question"><img src="img/help-circle.svg" alt="what?"></button>
-  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-sanitize.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/i18n/angular-locale_fr-fr.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/fr.js"></script>
+  <script type="text/javascript" src="//opendatasoft.github.io/ods-widgets/dist/ods-widgets.js"></script>
 </body>
 
 </html>
