@@ -8,7 +8,6 @@ module.exports = {
     app: './src/app.js'
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'ODS Minimal template',
       template: 'public/index.html'
